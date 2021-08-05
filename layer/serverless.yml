@@ -1,0 +1,13 @@
+org: '1251698794'
+app: supertyler-blog
+stage: dev
+component: layer
+name: supertyler-blog-layer
+inputs:
+  name: supertyler-blog-layer
+  region: ap-shanghai
+  src:
+    src: ../node_modules
+    targetDir: /node_modules
+  runtimes:
+    - Nodejs10.15

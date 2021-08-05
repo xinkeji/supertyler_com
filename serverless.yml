@@ -1,0 +1,41 @@
+org: '1251698794'
+app: supertyler-blog
+stage: dev
+component: nuxtjs
+name: nuxtjs-naXpRuLTe
+inputs:
+  src:
+    hook: npm run build
+    dist: ./
+    exclude:
+      - .env
+      - node_modules/**
+    src: ./
+  region: ap-shanghai
+  runtime: Nodejs10.15
+  apigatewayConf:
+    protocols:
+      - http
+      - https
+    environment: release
+    serviceTimeout: 60
+    autoCreateDns: false
+  staticConf:
+    cosConf:
+      replace: true
+      bucket: supertyler-blog-dev-1251698794
+      acl:
+        permissions: public-read
+      sources:
+        - src: .nuxt/dist/client
+          targetDir: /
+        - src: static
+          targetDir: /
+  isAutoCiDeploy: false
+  functionConf:
+    eip: true
+    timeout: 10
+    memorySize: 128
+  layers:
+    - name: '${output:${stage}:${app}:supertyler-blog-layer.name}'
+      version: '${output:${stage}:${app}:supertyler-blog-layer.version}'
