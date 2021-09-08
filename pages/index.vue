@@ -76,6 +76,7 @@ export default {
 
     .main {
       flex: 1;
+      width: 1px;
       padding: 0 10px;
 
       .article-list {

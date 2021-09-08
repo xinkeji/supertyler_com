@@ -41,13 +41,16 @@ export default {
    */
   css: [
     '~/assets/reset.css',
-    'element-ui/lib/theme-chalk/index.css'
+    '~/assets/reactive.css',
+    'element-ui/lib/theme-chalk/index.css',
+    'swiper/css/swiper.css'
   ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '@/plugins/element-ui/element-ui'
+    '@/plugins/element-ui/element-ui',
+    {src: "@/plugins/vue-swiper.js", ssr: false}
   ],
   /*
    ** Nuxt.js dev-modules

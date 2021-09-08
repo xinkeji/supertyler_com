@@ -1,26 +1,24 @@
 <template>
-  <slider animation="normal" :height="height" ref="sliderDom" style="max-height: 250px">
-    <slider-item
-      v-for="(item, index) in swiper" :key="index"
-    >
-      <nuxt-link :to="item.path">
-        <img class="cover" :src="item.image" :alt="item.title"/>
-        <div class="mask"></div>
-        <h2 class="title">{{ item.title }}</h2>
-      </nuxt-link>
-    </slider-item>
-  </slider>
+  <div v-swiper="swiperOption" class='i-swiper-box' style="height: 1.45rem; position: relative">
+    <div class="swiper-wrapper">
+      <div v-for="(item, index) in swiper" :key="index" class="swiper-slide">
+        <nuxt-link :to="item.path">
+          <div style="width: 100%; height: 1.45rem; background-size: 100% auto"
+               :style="{ 'backgroundImage': 'url(' +item.image +')'}"></div>
+          <div class="mask"></div>
+          <h2 class="title">{{ item.title }}</h2>
+        </nuxt-link>
+      </div>
+    </div>
+    <div class="skeleton"></div>
+    <div slot="pagination" class="swiper-pagination"></div>
+  </div>
 </template>
 
 <script>
-import {Slider, SliderItem} from 'vue-easy-slider'
 import http from "@/http/http";
 
 export default {
-  components: {
-    Slider,
-    SliderItem,
-  },
   async fetch() {
     try {
       const res = await http.getHomeConfig().then(data => data.data);
@@ -30,7 +28,6 @@ export default {
         }
         return item;
       });
-
     } catch (e) {
       console.log("网络错误！", e);
     }
@@ -38,61 +35,41 @@ export default {
   data() {
     return {
       swiper: [],
-      height: "200px"
-    }
+      swiperOption: {
+        lazy: {
+          loadPrevNext: true
+        },
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        }
+      }
+    };
   },
-  methods: {},
   mounted() {
-    let resizeHeight = () => {
-      const width = parseInt(window.getComputedStyle(this.$refs.sliderDom.$el).width);
-      this.height = width * 9 / 20 + "px";
-    }
-    resizeHeight();
-    window.addEventListener("resize", resizeHeight);
-  }
-}
+  },
+  methods: {}
+};
 </script>
-<style lang="scss">
 
-.wrap .container .main .slider-indicators {
-  position: absolute;
-  left: auto;
-  right: 20px;
-  top: 15px;
-  transform: none;
-
-  .slider-indicator-icon {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #F54D32;
-    transition: all 0.2s ease 0s;
-  }
-
-  .slider-indicator-active {
-    width: 18px;
-    border-radius: 40px;
-  }
-}
-</style>
 <style lang="scss" scoped>
+.i-swiper-box {
+  position: relative;
+  overflow: hidden
+}
+
 .cover {
   width: 100%;
 }
 
 .title {
   position: absolute;
-  bottom: 0.6rem;
-  left: 0.8rem;
+  bottom: 0.1rem;
+  left: 0.1rem;
   color: white;
-  font-size: 22px;
+  font-size: 0.15rem;
   text-shadow: 0.1rem 0.1rem 0.2rem black;
-}
-
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 17px;
-  }
 }
 
 .mask {
@@ -102,5 +79,58 @@ export default {
   height: 100px;
   width: 100%;
   background: linear-gradient(1turn, rgba(9, 15, 29, .4), transparent)
+}
+
+.swiper-pagination {
+  position: absolute;
+  left: auto;
+  right: 20px;
+  top: 15px;
+  width: auto;
+  transform: none;
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #F54D32;
+    transition: all 0.2s ease 0s;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 18px;
+    border-radius: 40px;
+  }
+}
+
+</style>
+
+<style>
+:root {
+  --loading-grey: #ededed;
+}
+
+.skeleton {
+  width: 100%;
+  height: 1.45rem;
+  background-color: var(--loading-grey);
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, .5) 50%,
+    rgba(255, 255, 255, 0) 60%
+  ) var(--loading-grey);
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
 }
 </style>
