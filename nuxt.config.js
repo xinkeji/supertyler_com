@@ -1,5 +1,4 @@
 export default {
-  mode: 'universal',
   env: {
     STATIC_URL: process.env.STATIC_URL || ''
   },
@@ -7,7 +6,11 @@ export default {
    ** Build configuration
    */
   build: {
-    extend(config, { isDev, isClient }) {
+    styleResources: {
+      scss: './assets/public.scss'
+    },
+    transpile: [/^element-ui/],
+    extend(config, {isDev, isClient}) {
       if (!isDev && process.env.STATIC_URL) {
         config.output.publicPath = process.env.STATIC_URL
       }
@@ -17,30 +20,35 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: 'Serverless Nuxt.js Application',
+    title: 'SuperTyler的博客',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
       {
         hid: 'description',
         name: 'description',
-        content: 'Serverless Nuxt.js Application Created By Serverless Framework'
+        content: 'SuperTyler的技术博客，分享编程与运维开发的个人经验'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: `${process.env.STATIC_URL || ''}/favicon.ico` }]
+    link: [{rel: 'icon', type: 'image/x-icon', href: `${process.env.STATIC_URL || ''}/favicon.ico`}]
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: {color: '#f56'},
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '~/assets/reset.css',
+    'element-ui/lib/theme-chalk/index.css'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '@/plugins/element-ui/element-ui'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -48,5 +56,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: []
+  modules: [
+    '@nuxtjs/axios'
+  ]
 }
