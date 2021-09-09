@@ -1,10 +1,9 @@
 <template>
-  <div v-swiper="swiperOption" class='i-swiper-box' style="height: 1.45rem; position: relative">
+  <div v-swiper="swiperOption" class="i-swiper-box">
     <div class="swiper-wrapper">
       <div v-for="(item, index) in swiper" :key="index" class="swiper-slide">
         <nuxt-link :to="item.path">
-          <div style="width: 100%; height: 1.45rem; background-size: 100% auto"
-               :style="{ 'backgroundImage': 'url(' +item.image +')'}"></div>
+          <div class="cover" :style="{ 'backgroundImage': 'url(' +item.image +')'}"></div>
           <div class="mask"></div>
           <h2 class="title">{{ item.title }}</h2>
         </nuxt-link>
@@ -56,11 +55,15 @@ export default {
 <style lang="scss" scoped>
 .i-swiper-box {
   position: relative;
-  overflow: hidden
+  overflow: hidden;
+  height: 1.5rem;
 }
 
 .cover {
   width: 100%;
+  height: 1.5rem;
+  background-size: 100% auto;
+  background-position: center;
 }
 
 .title {
@@ -112,7 +115,7 @@ export default {
 
 .skeleton {
   width: 100%;
-  height: 1.45rem;
+  height: 1.5rem;
   background-color: var(--loading-grey);
   background: linear-gradient(
     100deg,

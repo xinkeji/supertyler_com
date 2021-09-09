@@ -1,5 +1,5 @@
 <template>
-  <el-header class="header-wrap  hidden-sm-and-down">
+  <el-header class="header-wrap hidden-sm-and-down">
     <nav class="nav-wrap">
 
       <!-- logo -->
@@ -22,6 +22,7 @@
         <input class="search-input" :style="{width: inputWidth, opacity:inputOpacity}" @blur="inputBlur"></input>
         <i class="el-icon-search search-icon" @mouseenter="inputExpand"></i>
       </div>
+
     </nav>
   </el-header>
 </template>

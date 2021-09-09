@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import http from "~/http/http.js";
 import 'element-ui/lib/theme-chalk/display.css';
 import indexSwiperItem from "~/components/index-swiper-item";
 
@@ -32,25 +31,6 @@ export default {
   components: {
     indexSwiperItem
   },
-  // async asyncData() {
-  //   try {
-  //     const res = await http.getHomeConfig().then(data => data.data);
-  //     let swipe_nav = res.expand.swipe_nav.map(item => {
-  //       if (item.type === "apppage") {
-  //         item.path = item.path.replace("pages/detail/detail?id=", "/post/")
-  //       }
-  //       return item;
-  //     })
-  //     console.log(swipe_nav)
-  //
-  //     return {
-  //       swiper: swipe_nav
-  //     }
-  //   } catch (e) {
-  //     console.log("网络错误！", e);
-  //     return {}
-  //   }
-  // },
   data() {
     return {
       swiperOptions: {
