@@ -1,0 +1,52 @@
+name: Deploy supertyler.com
+
+on: [push, pull_request]
+
+env:
+  NODE_JS_VERSION: 12
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_JS_VERSION }}
+        
+    - name: Verify Node.js
+      run: node --version
+
+    - name: Verify npm
+      run: npm -v
+      
+    - name: Checkout source
+      uses: actions/checkout@v2
+      with:
+        path: source
+            
+    - name: Generate
+      run: |
+        cd ./source
+        npm install
+        npm run build
+        npm run generate
+    - name: Checkout supertylerx.github.io site
+      uses: actions/checkout@v2
+      with:
+        repository: SuperTylerX/SuperTylerBlog
+        path: site
+        token: ${{ secrets.DEPLOY_KEY }}
+
+    - name: Copy generated file to site
+      run: cp -r ./source/dist/. ./site
+        
+    - name: Push site
+      run: |
+        cd ./site
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        current_time=`date '+%Y-%m-%d %H:%m:%S'`
+        git commit -m "Update at $current_time"
+        git push
