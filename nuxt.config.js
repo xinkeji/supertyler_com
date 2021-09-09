@@ -41,7 +41,7 @@ export default {
    */
   css: [
     '~/assets/reset.css',
-    '~/assets/reactive.css',
+    '~/assets/responsive.css',
     'element-ui/lib/theme-chalk/index.css',
     'swiper/css/swiper.css'
   ],

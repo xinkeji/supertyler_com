@@ -52,7 +52,7 @@ export default {
     max-width: 1140px;
     width: 100%;
     display: flex;
-    margin-top: 20px;
+    margin-top: 0.5rem;
 
     .main {
       flex: 1;

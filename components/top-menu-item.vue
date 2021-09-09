@@ -1,30 +1,39 @@
 <template>
-  <el-header class="header-wrap hidden-sm-and-down">
-    <nav class="nav-wrap">
+  <div>
+    <el-header class="header-wrap hidden-sm-and-down">
+      <nav class="nav-wrap">
 
-      <!-- logo -->
+        <!-- logo -->
+        <nuxt-link to="/">
+          <h1 class="logo">SuperTyler的博客</h1>
+        </nuxt-link>
+
+        <!-- 导航菜单 -->
+        <el-menu class="menus" mode="horizontal" default-active="1">
+          <el-submenu v-for="(parent, index) in menus" :key="index" :index="parent.object_id">
+            <template slot="title">{{ parent.title }}</template>
+            <el-menu-item v-for="(child, index) in parent.child_items" :key="index" :index="child.object_id">
+              {{ child.title }}
+            </el-menu-item>
+          </el-submenu>
+        </el-menu>
+
+        <!-- 搜索框-->
+        <div class="search">
+          <input class="search-input" :style="{width: inputWidth, opacity:inputOpacity}" @blur="inputBlur"></input>
+          <i class="el-icon-search search-icon" @mouseenter="inputExpand"></i>
+        </div>
+
+      </nav>
+    </el-header>
+    <div style="height: 1.5rem" class="hidden-md-and-up"></div>
+    <div class="mobile-header-wrap hidden-md-and-up">
       <nuxt-link to="/">
         <h1 class="logo">SuperTyler的博客</h1>
       </nuxt-link>
+    </div>
+  </div>
 
-      <!-- 导航菜单 -->
-      <el-menu class="menus" mode="horizontal" default-active="1">
-        <el-submenu v-for="(parent, index) in menus" :key="index" :index="parent.object_id">
-          <template slot="title">{{ parent.title }}</template>
-          <el-menu-item v-for="(child, index) in parent.child_items" :key="index" :index="child.object_id">
-            {{ child.title }}
-          </el-menu-item>
-        </el-submenu>
-      </el-menu>
-
-      <!-- 搜索框-->
-      <div class="search">
-        <input class="search-input" :style="{width: inputWidth, opacity:inputOpacity}" @blur="inputBlur"></input>
-        <i class="el-icon-search search-icon" @mouseenter="inputExpand"></i>
-      </div>
-
-    </nav>
-  </el-header>
 </template>
 
 <script>
@@ -124,4 +133,28 @@ export default {
   }
 }
 
+
+.mobile-header-wrap {
+  height: 1.5rem;
+  background: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0 5px 40px 0 rgb(17 58 93 / 10%);
+
+  .logo {
+    background-image: url("~/static/logo-banner.png");
+    background-size: 100% 100%;
+    width: 6.0rem;
+    height: 1.0rem;
+    cursor: pointer;
+    text-indent: -999em;
+  }
+
+}
 </style>

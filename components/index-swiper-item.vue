@@ -56,22 +56,22 @@ export default {
 .i-swiper-box {
   position: relative;
   overflow: hidden;
-  height: 1.5rem;
+  height: 6rem;
 }
 
 .cover {
   width: 100%;
-  height: 1.5rem;
+  height: 6rem;
   background-size: 100% auto;
   background-position: center;
 }
 
 .title {
   position: absolute;
-  bottom: 0.1rem;
-  left: 0.1rem;
+  bottom: 0.3rem;
+  left: 0.3rem;
   color: white;
-  font-size: 0.15rem;
+  font-size: 0.4rem;
   text-shadow: 0.1rem 0.1rem 0.2rem black;
 }
 
@@ -115,7 +115,7 @@ export default {
 
 .skeleton {
   width: 100%;
-  height: 1.5rem;
+  height: 6rem;
   background-color: var(--loading-grey);
   background: linear-gradient(
     100deg,
