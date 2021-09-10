@@ -2,18 +2,23 @@
   <div>
     <top-menu-item></top-menu-item>
     <nuxt/>
+    <footer-item></footer-item>
   </div>
 </template>
 
 <style>
-  body{
-    background: #F0F0F2;
-  }
+body {
+  background: #F0F0F2;
+}
 </style>
 <script>
 import TopMenuItem from "~/components/top-menu-item";
+import FooterItem from "~/components/footer-item";
 
 export default {
-  components: {TopMenuItem}
+  components: {
+    TopMenuItem,
+    FooterItem
+  }
 }
 </script>
