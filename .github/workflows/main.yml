@@ -1,6 +1,6 @@
 name: Deploy supertyler.com
 
-on: [push, pull_request]
+on: push
 
 env:
   NODE_JS_VERSION: 12
@@ -31,10 +31,10 @@ jobs:
         npm install
         npm run build
         npm run generate
-    - name: Checkout supertylerx.github.io site
+    - name: Checkout SuperTylerX.github.io site
       uses: actions/checkout@v2
       with:
-        repository: SuperTylerX/SuperTylerBlog
+        repository: SuperTylerX/SuperTylerX.github.io
         path: site
         token: ${{ secrets.DEPLOY_KEY }}
 
