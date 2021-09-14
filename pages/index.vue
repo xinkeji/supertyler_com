@@ -2,10 +2,11 @@
   <div class="wrap">
     <div class="container">
       <section class="main">
+        <!-- 首页幻灯 -->
         <index-swiper-item class="shadow"></index-swiper-item>
-        <!-- 正文列表-->
+        <!-- 正文列表 -->
         <div class="article-list shadow">
-
+          <articleListItem :postList="postsList"></articleListItem>
         </div>
 
       </section>
@@ -26,18 +27,37 @@
 <script>
 import 'element-ui/lib/theme-chalk/display.css';
 import indexSwiperItem from "~/components/index-swiper-item";
+import articleListItem from "~/components/article-list-item";
+
+import http from "~/http/http";
+import moment from "moment";
+
+let page = 1;
 
 export default {
   components: {
-    indexSwiperItem
+    indexSwiperItem,
+    articleListItem
+  },
+  async asyncData() {
+    const queryObj = {
+      per_page: 10,
+      orderby: "date",
+      order: "desc",
+      page: page
+    };
+    let res = await http.getArticleList(queryObj).then(data => data.data);
+    res = res.map(item => {
+      item.formatDate = moment(item.date).utcOffset(8).format('YYYY-MM-DD')
+      return item;
+    })
+    return {
+      postsList: res
+    }
   },
   data() {
     return {
-      swiperOptions: {
-        pagination: {
-          el: '.swiper-pagination'
-        }
-      }
+      postsList: []
     }
   }
 }
@@ -62,7 +82,6 @@ export default {
       .article-list {
         margin-top: 15px;
         background-color: #fff;
-        height: 400px;
       }
     }
 

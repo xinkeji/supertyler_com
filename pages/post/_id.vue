@@ -1,7 +1,5 @@
 <template>
-  <view>
-    {{ $route.params.id }}
-  </view>
+  <div>{{ $route.params.id }}</div>
 </template>
 
 <script>

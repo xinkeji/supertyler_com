@@ -50,7 +50,8 @@ export default {
    */
   plugins: [
     '@/plugins/element-ui/element-ui',
-    {src: "@/plugins/vue-swiper.js", ssr: false}
+    '@/plugins/font-awesome',
+    '@/plugins/vue-swiper.js',
   ],
   /*
    ** Nuxt.js dev-modules
@@ -60,6 +61,23 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/axios'
-  ]
+    '@nuxtjs/axios',
+    "nuxt-fontawesome"
+  ],
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas'],
+      },
+      {
+        set: '@fortawesome/free-regular-svg-icons',
+        icons: ['far'],
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['fab'],
+      }
+    ]
+  }
 }
