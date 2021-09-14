@@ -1,7 +1,7 @@
 <template>
   <div>
     <top-menu-item></top-menu-item>
-    <nuxt/>
+    <nuxt keep-alive/>
     <footer-item></footer-item>
   </div>
 </template>

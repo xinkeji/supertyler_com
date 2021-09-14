@@ -6,9 +6,7 @@ export default {
    ** Build configuration
    */
   build: {
-    styleResources: {
-      scss: './assets/public.scss'
-    },
+    styleResources: {},
     transpile: [/^element-ui/],
     extend(config, {isDev, isClient}) {
       if (!isDev && process.env.STATIC_URL) {
@@ -41,6 +39,7 @@ export default {
    */
   css: [
     '~/assets/reset.css',
+    '~/assets/public.css',
     '~/assets/responsive.css',
     'element-ui/lib/theme-chalk/index.css',
     'swiper/css/swiper.css'

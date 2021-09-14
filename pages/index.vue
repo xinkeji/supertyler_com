@@ -7,8 +7,11 @@
         <!-- 正文列表 -->
         <div class="article-list shadow">
           <articleListItem :postList="postsList"></articleListItem>
+          <div class="loading-more" v-if="!isLastPage" @click="loadMorePosts">
+            <span v-if="!isPostLoading">加载更多</span>
+            <i v-else class="el-icon-loading"></i>
+          </div>
         </div>
-
       </section>
 
       <section class="aside hidden-sm-and-down">
@@ -32,7 +35,7 @@ import articleListItem from "~/components/article-list-item";
 import http from "~/http/http";
 import moment from "moment";
 
-let page = 1;
+let page = 2;
 
 export default {
   components: {
@@ -40,24 +43,67 @@ export default {
     articleListItem
   },
   async asyncData() {
+    if (!process.server) return
     const queryObj = {
       per_page: 10,
       orderby: "date",
       order: "desc",
-      page: page
+      page: 1
     };
     let res = await http.getArticleList(queryObj).then(data => data.data);
+    if (!Array.isArray(res)) {
+      console.log("出啥问题了")
+      return;
+    }
     res = res.map(item => {
       item.formatDate = moment(item.date).utcOffset(8).format('YYYY-MM-DD')
       return item;
     })
+
+    console.log(page)
     return {
       postsList: res
     }
   },
   data() {
     return {
-      postsList: []
+      postsList: [],
+      isLastPage: false,
+      isPostLoading: false
+    }
+  },
+  methods: {
+    async loadMorePosts() {
+      const queryObj = {
+        per_page: 10,
+        orderby: "date",
+        order: "desc",
+        page: page
+      };
+      try {
+        this.isPostLoading = true;
+        let res = await http.getArticleList(queryObj).then(data => data.data);
+        this.isPostLoading = false;
+        if (Array.isArray(res)) {
+          res = res.map(item => {
+            item.formatDate = moment(item.date).utcOffset(8).format('YYYY-MM-DD')
+            return item;
+          })
+          if (res.length < 10) {
+            this.isLastPage = true;
+            console.log("最后一页了");
+          }
+          this.postsList = this.postsList.concat(res);
+          page++;
+        } else if (res.code === "rest_post_invalid_page_number") {
+          this.isLastPage = true;
+          console.log("最后一页了");
+        }
+      } catch (e) {
+        this.isPostLoading = false;
+        console.log(e)
+      }
+
     }
   }
 }
@@ -82,6 +128,25 @@ export default {
       .article-list {
         margin-top: 15px;
         background-color: #fff;
+      }
+
+      .loading-more {
+        //display: flex;
+        //justify-content: center;
+        //align-content: center;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        font-size: 14px;
+        color: tomato;
+        cursor: pointer;
+
+        @media screen and (max-width: 540px) {
+          font-size: 0.5rem;
+          line-height: 1.5rem;
+          height: 1.5rem;
+        }
+
       }
     }
 

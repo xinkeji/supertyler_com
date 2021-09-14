@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="post-item" v-for="(item, index) in postList" :key="index">
-      <div class="left-img">
+      <div class="left-img skeleton">
         <nuxt-link :to="'/post/' + item.id">
           <div class="cover" :style="{backgroundImage: 'url('+ item.post_thumbnail_image+')' }"></div>
         </nuxt-link>
@@ -59,7 +59,6 @@ export default {
   .left-img {
     width: 5rem;
     height: 2.8125rem;
-    background-color: #ccc;
     flex-shrink: 0;
 
     .cover {

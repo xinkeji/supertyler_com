@@ -9,7 +9,7 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="skeleton"></div>
+    <div class="skeleton img-skeleton"></div>
     <div slot="pagination" class="swiper-pagination"></div>
   </div>
 </template>
@@ -84,6 +84,14 @@ export default {
   background: linear-gradient(1turn, rgba(9, 15, 29, .4), transparent)
 }
 
+.img-skeleton {
+  width: 100%;
+  height: 6rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .swiper-pagination {
   position: absolute;
   left: auto;
@@ -106,34 +114,4 @@ export default {
   }
 }
 
-</style>
-
-<style>
-:root {
-  --loading-grey: #ededed;
-}
-
-.skeleton {
-  width: 100%;
-  height: 6rem;
-  background-color: var(--loading-grey);
-  background: linear-gradient(
-    100deg,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, .5) 50%,
-    rgba(255, 255, 255, 0) 60%
-  ) var(--loading-grey);
-  background-size: 200% 100%;
-  background-position-x: 180%;
-  animation: 1s loading ease-in-out infinite;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-@keyframes loading {
-  to {
-    background-position-x: -20%;
-  }
-}
 </style>
