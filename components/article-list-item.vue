@@ -80,7 +80,7 @@ export default {
     justify-content: space-between;
 
     .title {
-      font-size: 20px;
+      font-size: 18px;
       line-height: 25px;
       font-weight: bold;
       display: -webkit-box;
@@ -99,13 +99,13 @@ export default {
       }
 
       @media screen and (max-width: 424px) {
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 13px;
+        line-height: 15px;
       }
     }
 
     .excerpt {
-      font-size: 12px;
+      font-size: 14px;
       color: #797C80;
       line-height: 20px;
       display: -webkit-box;
