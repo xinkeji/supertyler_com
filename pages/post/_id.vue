@@ -20,6 +20,11 @@ import prism from 'prismjs';
 import "prismjs/themes/prism.css";
 
 export default {
+  head() {
+    return {
+      title: this.post.title.rendered
+    }
+  },
   data() {
     return {
       post: []

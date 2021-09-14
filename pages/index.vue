@@ -43,7 +43,6 @@ export default {
     articleListItem
   },
   async asyncData() {
-    if (!process.server) return
     const queryObj = {
       per_page: 10,
       orderby: "date",
