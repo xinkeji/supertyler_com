@@ -38,6 +38,22 @@ import moment from "moment";
 let page = 2;
 
 export default {
+  head() {
+    return {
+      script: [{
+        innerHTML:
+          `(function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.href) {
+              history.replaceState(null, null, redirect);
+            }
+          })();
+          `
+      }
+      ]
+    }
+  },
   components: {
     indexSwiperItem,
     articleListItem
