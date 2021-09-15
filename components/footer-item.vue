@@ -19,7 +19,7 @@ export default {
 <style scoped lang="scss">
 .footer-wrap {
   margin-top: 0.4rem;
-  height: 2rem;
+  height: 3rem;
   background-color: #FFFFFF;
   box-shadow: 0 0 40px rgb(17 58 93 / 10%);;
   display: flex;
@@ -29,10 +29,15 @@ export default {
   .footer-copyright {
     max-width: 1140px;
     flex: 1;
-    font-size: 0.3rem;
     color: #90949c;
     text-align: center;
+    font-size: 0.3rem;
     line-height: 0.7rem;
+
+    @media screen and (max-width: 780px) {
+      font-size: 0.5rem;
+      line-height: 1rem;
+    }
 
     a {
       text-decoration: none;

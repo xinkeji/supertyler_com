@@ -1,0 +1,185 @@
+.content {
+  padding: 0.4rem;
+  font-size: 16px;
+  position: relative;
+}
+
+.content > p,
+.content > pre,
+.content > ul,
+.content > ol,
+.content > dl,
+.content > form,
+.content > table,
+.content > blockquote,
+.content > div {
+  margin-bottom: 1.2em;
+}
+
+.content blockquote:after,
+.content blockquote:before,
+q:after,
+q:before {
+  content: ""
+}
+
+.content blockquote,
+q {
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  quotes: none
+}
+
+.content blockquote {
+  box-sizing: border-box;
+  font-family: 思源宋体 CN SemiBold;
+  font-size: 16px;
+  line-height: 29px;
+  color: #797C80;
+  background: #F5F6F7;
+  border-radius: 4px;
+  width: 100%;
+  margin: 0 0 1.2em;
+  padding: 1em !important
+}
+
+.content blockquote:before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 16px;
+  margin-bottom: 16px;
+}
+
+.content blockquote p {
+  margin: 0
+}
+
+.content blockquote p + p {
+  margin-top: 1.2em;
+}
+
+.content blockquote small {
+  float: right;
+  margin-top: 25px;
+  color: rgba(0, 0, 0, .44);
+  font-style: italic
+}
+
+.content > ol,
+.content > ul {
+  padding: 0;
+  margin-bottom: 1.2em;
+  margin-left: 2em;
+  line-height: 1.8;
+}
+
+.content > ol {
+  list-style: decimal;
+}
+
+.content > ol li + li,
+.content > ul li + li {
+  margin-top: 20px
+}
+
+.content > ul {
+  list-style: disc;
+}
+
+.content > li ul {
+  list-style: circle;
+  margin-bottom: 0.8em;
+  margin-left: 2em;
+}
+
+.content > p {
+  word-wrap: break-word;
+  word-break: normal;
+  line-height: 1.8;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.content a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #0084ff;
+}
+
+.content > h2,
+.content > h3,
+.content > h4,
+.content > h5,
+.content > h6 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.content > h1 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.content > h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.content h2::before {
+  display: none;
+}
+
+.content > h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.content > h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.content > h5 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.content > h6 {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.content > h1 {
+  font-size: 1.6em;
+}
+
+.content p > a:hover {
+  text-decoration: underline;
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-header class="header-wrap hidden-sm-and-down">
+    <el-header class="header-wrap">
       <nav class="nav-wrap">
 
         <!-- logo -->
@@ -26,8 +26,8 @@
 
       </nav>
     </el-header>
-    <div style="height: 1.5rem" class="hidden-md-and-up"></div>
-    <div class="mobile-header-wrap hidden-md-and-up">
+    <div class="mobile-header-wrap-placeholder"></div>
+    <div class="mobile-header-wrap ">
       <nuxt-link to="/">
         <h1 class="logo">SuperTyler的博客</h1>
       </nuxt-link>
@@ -74,6 +74,9 @@ export default {
   display: flex;
   justify-content: center;
   background-color: #FFFFFF;
+  @media screen and (max-width: 780px) {
+    display: none;
+  }
 
   .nav-wrap {
     max-width: 1140px;
@@ -133,6 +136,12 @@ export default {
   }
 }
 
+.mobile-header-wrap-placeholder {
+  height: 1.5rem;
+  @media screen and (min-width: 780px) {
+    display: none;
+  }
+}
 
 .mobile-header-wrap {
   height: 1.5rem;
@@ -146,6 +155,10 @@ export default {
   width: 100%;
   z-index: 99;
   box-shadow: 0 5px 40px 0 rgb(17 58 93 / 10%);
+
+  @media screen and (min-width: 780px) {
+    display: none;
+  }
 
   .logo {
     background-image: url("~/static/logo-banner.png");

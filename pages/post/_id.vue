@@ -5,6 +5,7 @@
     </div>
     <article class="article">
       <div class="cover" :style="{backgroundImage: 'url(' + post.post_frist_image+ ')'}">
+        <div class="mask"></div>
         <div class="title">{{ post.title.rendered }}</div>
       </div>
       <div class="content" v-html="post.content.rendered"></div>
@@ -18,6 +19,7 @@
 import http from "@/http/http";
 import prism from 'prismjs';
 import "prismjs/themes/prism.css";
+import "~/assets/post.css";
 
 export default {
   head() {
@@ -50,10 +52,6 @@ export default {
     return /^\d+$/.test(params.id);
   },
   mounted() {
-    // window.Prism = window.Prism || {};
-    // window.Prism.manual = true;
-    // import ('prismjs');
-    // import ("prismjs/themes/prism.css");
     Prism.highlightAll();
   }
 }
@@ -107,23 +105,28 @@ export default {
         left: 0.4rem;
         color: #FFFFFF;
         font-weight: bold;
+        font-size: 32px;
+        line-height: 36px;
+        max-width: 80%;
+        text-shadow: 0.1rem 0.1rem 0.2rem black;
+
+        @media screen and (max-width: 780px) {
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+      }
+
+      .mask {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 5rem;
+        width: 100%;
+        background: linear-gradient(1turn, rgba(9, 15, 29, .4), transparent)
       }
     }
 
-    .content {
-      padding: 0.4rem;
-
-
-    }
   }
 }
 
-</style>
-
-<style lang="scss">
-.post-wrap .article .content {
-  img {
-    max-width: 100%;
-  }
-}
 </style>

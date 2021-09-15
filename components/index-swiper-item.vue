@@ -71,8 +71,12 @@ export default {
   bottom: 0.3rem;
   left: 0.3rem;
   color: white;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   text-shadow: 0.1rem 0.1rem 0.2rem black;
+
+  @media screen and (max-width: 780px) {
+    font-size: 0.7rem;
+  }
 }
 
 .mask {

@@ -51,15 +51,12 @@ export default {
     };
     let res = await http.getArticleList(queryObj).then(data => data.data);
     if (!Array.isArray(res)) {
-      console.log("出啥问题了")
       return;
     }
     res = res.map(item => {
       item.formatDate = moment(item.date).utcOffset(8).format('YYYY-MM-DD')
       return item;
     })
-
-    console.log(page)
     return {
       postsList: res
     }
@@ -130,9 +127,6 @@ export default {
       }
 
       .loading-more {
-        //display: flex;
-        //justify-content: center;
-        //align-content: center;
         text-align: center;
         line-height: 40px;
         height: 40px;
