@@ -51,7 +51,8 @@ export default {
           })();
           `
       }
-      ]
+      ],
+      __dangerouslyDisableSanitizers: ['script']
     }
   },
   components: {
