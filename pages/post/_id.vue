@@ -1,7 +1,8 @@
 <template>
   <div class="post-wrap">
     <div class="top-cover-img">
-      <div class="img" :style="{backgroundImage: 'url(' + post.post_frist_image+ ')'}"></div>
+      <div class="img"
+           :style="{backgroundImage: 'linear-gradient(rgba(255,255,255,0), rgba(240,240,242,1) 70%, rgba(240,240,242,1)), url(' + post.post_frist_image+ ')'}"></div>
     </div>
     <article class="article">
       <div class="cover" :style="{backgroundImage: 'url(' + post.post_frist_image+ ')'}">
@@ -19,6 +20,8 @@
 import http from "@/http/http";
 import prism from 'prismjs';
 import "prismjs/themes/prism.css";
+import prismline from "prismjs/plugins/line-numbers/prism-line-numbers";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 import "~/assets/post.css";
 
 export default {
@@ -80,7 +83,7 @@ export default {
 
   .article {
     width: 100%;
-    max-width: 780px;
+    max-width: 1140px;
     background-color: #FFFFFF;
     border-radius: 4px;
     box-shadow: 0 0 2px rgb(98 124 153 / 10%);
@@ -88,7 +91,7 @@ export default {
     margin-top: 1rem;
     overflow: hidden;
 
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 1140px) {
       margin-top: 0;
     }
 

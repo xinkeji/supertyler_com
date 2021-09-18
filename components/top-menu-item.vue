@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="header-wrap-placeholder"></div>
     <el-header class="header-wrap">
       <nav class="nav-wrap">
 
@@ -68,12 +69,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header-wrap-placeholder {
+  height: 60px;
+  @media screen and (max-width: 780px) {
+    display: none;
+  }
+}
+
 .header-wrap {
   width: 100%;
   box-shadow: 0 5px 40px 0 rgb(17 58 93 / 10%);
   display: flex;
   justify-content: center;
   background-color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   @media screen and (max-width: 780px) {
     display: none;
   }
