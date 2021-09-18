@@ -98,7 +98,7 @@ export default {
     position: relative;
 
     .logo {
-      background-image: url("~/static/logo-banner.png");
+      background-image: url("~/static/images/logo-banner.png");
       background-size: 100% 100%;
       width: 180px;
       height: 30px;
@@ -173,7 +173,7 @@ export default {
   }
 
   .logo {
-    background-image: url("~/static/logo-banner.png");
+    background-image: url("~/static/images/logo-banner.png");
     background-size: 100% 100%;
     width: 6.0rem;
     height: 1.0rem;

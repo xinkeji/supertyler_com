@@ -175,7 +175,7 @@ export default {
           width: 140px;
           height: 140px;
           border-radius: 50%;
-          background-image: url("~/static/avatar.jpg");
+          background-image: url("~/static/images/avatar.jpg");
           background-size: cover;
         }
 

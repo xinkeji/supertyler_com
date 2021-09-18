@@ -22,9 +22,14 @@ function getPostDetail(postId) {
   return axios.get(API.POST_DETAIL_URL + "/" + postId);
 }
 
+function getPostTag(queryObj) {
+  return axios.get(API.POST_TAG_URL + "?" + querystring.stringify(queryObj))
+}
+
 export default {
   getTopMenu,
   getHomeConfig,
   getArticleList,
-  getPostDetail
+  getPostDetail,
+  getPostTag
 }
