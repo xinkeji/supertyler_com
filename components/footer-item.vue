@@ -6,13 +6,30 @@
         本博客由 <a href="https://nuxtjs.org/" target="_blank" rel="nofollow">Nuxt.js</a> 强力驱动
       </p>
       <p><a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">苏ICP备19025406号-1</a></p>
+      <aplayer v-if="isloadAPlayer" :audio="audio" :lrcType="3" :autoplay="false" fixed/>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: "footer-item.vue"
+  name: "footer-item.vue",
+  data() {
+    return {
+      audio: {
+        name: '循環バス',
+        artist: '22/7',
+        url: '/music/循環バス-22_7.mp3',
+        cover: '/music/循環バス-22_7.jpg',
+        lrc: '/music/循環バス-22_7.lrc',
+      },
+      isloadAPlayer: false
+    }
+  },
+  mounted() {
+    this.isloadAPlayer = true;
+  }
 }
 </script>
 

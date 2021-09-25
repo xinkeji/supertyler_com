@@ -51,6 +51,7 @@ export default {
     '@/plugins/element-ui/element-ui',
     '@/plugins/font-awesome',
     '@/plugins/vue-swiper.js',
+    {src: '~/plugins/vue-aplayer', ssr: false}
   ],
   /*
    ** Nuxt.js dev-modules
