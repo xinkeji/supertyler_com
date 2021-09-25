@@ -55,7 +55,8 @@
 
       <div class="relatives">
 
-        <nuxt-link class="item previous" :to="`/post/${post.previous_post_id}`">
+        <nuxt-link class="item previous" :to="`/post/${post.previous_post_id}`"
+                   v-if="post.previous_post_id">
           <div class="icon">
             <font-awesome-icon :icon="['fas', 'chevron-left']"/>
           </div>
@@ -65,8 +66,10 @@
 
 
         <nuxt-link class="item next" :to="`/post/${post.next_post_id}`"
-                   v-if="post.next_post_title">
-          <font-awesome-icon class="icon" :icon="['fas', 'chevron-right']"/>
+                   v-if="post.next_post_id">
+          <div class="icon">
+            <font-awesome-icon :icon="['fas', 'chevron-right']"/>
+          </div>
           <div class="desc">下一篇</div>
           <div class="title"> {{ post.next_post_title }}</div>
         </nuxt-link>
