@@ -5,7 +5,7 @@
  * Copyright (c) 2021 https://uni.supertyler.com
  */
 
-const BASE_URL = `https://blog.supertyler.com`;
+const BASE_URL = `https://xkj.93665.xin`;
 const WORDPRESS_REST_API_URL = `${BASE_URL}/wp-json/wp/v2`;
 const PLUGIN_REST_API_URL = `${BASE_URL}/wp-json/uni-app-rest-enhanced/v1`;
 const JWT_REST_API_URL = `${BASE_URL}/wp-json/jwt-auth/v1`;
