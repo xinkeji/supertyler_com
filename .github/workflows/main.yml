@@ -34,7 +34,7 @@ jobs:
     - name: Checkout SuperTylerX.github.io site
       uses: actions/checkout@v2
       with:
-        repository: SuperTylerX/SuperTylerX.github.io
+        repository: xinkeji/wpblog
         path: site
         token: ${{ secrets.DEPLOY_KEY }}
 
